@@ -1123,3 +1123,310 @@ footer p {
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--ink3); }
+
+/* ========================================== */
+/* ========== MOBILE & TABLET STYLES ======== */
+/* ========================================== */
+
+/* Tablet & Mobile Devices (< 992px) */
+@media (max-width: 992px) {
+  /* Disable custom cursor on touch devices to ensure flawless touch interactions */
+  .cursor {
+    display: none !important;
+  }
+  body {
+    cursor: auto !important;
+    overflow-x: hidden !important;
+  }
+  a, button, .project-card, .tech-pill, .selector-item, .modal-close, .proj-btn, .project-btn, .mini-bar {
+    cursor: pointer !important;
+  }
+
+  /* Global section spacing */
+  section {
+    padding-top: 64px !important;
+  }
+
+  /* ===== HOME PAGE RESPONSIVENESS ===== */
+  #home {
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .home-grid {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+    min-height: calc(100vh - 64px) !important;
+  }
+  .home-left {
+    padding: 48px 24px !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border) !important;
+  }
+  .home-title {
+    font-size: clamp(38px, 8vw, 56px) !important;
+    line-height: 1.05 !important;
+    margin-bottom: 16px !important;
+  }
+  .home-subtitle {
+    font-size: 18px !important;
+    margin-bottom: 16px !important;
+  }
+  .home-desc {
+    max-width: 100% !important;
+    margin-bottom: 28px !important;
+  }
+  .home-right {
+    grid-template-rows: auto auto !important;
+  }
+  .stat-panel {
+    padding: 32px 24px !important;
+    border-bottom: 1px solid var(--border) !important;
+  }
+  .skills-panel {
+    padding: 32px 24px !important;
+  }
+  .stat-grid {
+    gap: 12px !important;
+  }
+
+  /* ===== ABOUT PAGE RESPONSIVENESS ===== */
+  #about {
+    padding: 60px 24px 80px !important;
+  }
+  .section-header {
+    margin-bottom: 36px !important;
+    padding-bottom: 20px !important;
+  }
+  .section-num {
+    font-size: 52px !important;
+  }
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .achievements-row {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-top: 32px !important;
+  }
+  .achievement-card {
+    padding: 20px 20px !important;
+  }
+
+  /* ===== EXPERIENCE PAGE RESPONSIVENESS ===== */
+  #experience {
+    padding: 60px 24px 80px !important;
+  }
+  .exp-timeline {
+    padding-left: 16px !important;
+  }
+  .exp-item {
+    padding: 0 0 40px 20px !important;
+  }
+  .exp-role {
+    font-size: 18px !important;
+  }
+
+  /* ===== PROJECTS PAGE (DASHBOARD) RESPONSIVENESS ===== */
+  /* Force vertical scrollability and stacking for projects dashboard page */
+  body:has(.dashboard-container),
+  body:has(#dashboardCanvas) {
+    overflow-y: auto !important;
+    height: auto !important;
+  }
+  .dashboard-container {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+    min-height: calc(100vh - 64px) !important;
+    overflow: visible !important;
+  }
+  .pane-left {
+    width: 100% !important;
+    min-width: 0 !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border) !important;
+    padding: 24px 20px !important;
+    background: var(--bg2) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    overflow-y: visible !important;
+  }
+  /* Convert projects list sidebar into horizontal scrollable tab-row */
+  .project-selector-list {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    width: 100% !important;
+    padding: 4px 4px 12px 4px !important;
+    gap: 12px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .selector-item {
+    width: 260px !important;
+    flex-shrink: 0 !important;
+    text-align: left !important;
+  }
+  /* Move active selection indicator bar to top on horizontal tabs */
+  .selector-item.active::before {
+    left: 16px !important;
+    right: 16px !important;
+    top: 0 !important;
+    bottom: auto !important;
+    width: auto !important;
+    height: 3px !important;
+    border-radius: 0 0 2px 2px !important;
+  }
+  .skills-mini-cloud {
+    display: none !important;
+  }
+  .pane-right {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 24px 20px 80px 20px !important;
+    height: auto !important;
+  }
+  /* Stack details card and put interactive canvas on top */
+  .interactive-details-card {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+    max-height: none !important;
+    width: 100% !important;
+  }
+  .card-vis-side {
+    height: 240px !important;
+    order: -1 !important;
+  }
+  .card-detail-side {
+    padding: 24px 20px !important;
+    overflow-y: visible !important;
+    gap: 16px !important;
+  }
+  .detail-name {
+    font-size: 18px !important;
+  }
+  .detail-desc {
+    font-size: 13px !important;
+  }
+  .detail-bullets li {
+    font-size: 12px !important;
+  }
+  .card-metrics-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+}
+
+/* Mobile Screens (< 768px) */
+@media (max-width: 768px) {
+  /* ===== PREMIUM GLASSMORPHIC FLOATING BOTTOM NAVIGATION ===== */
+  nav {
+    padding: 0 20px !important;
+  }
+  .nav-status {
+    display: none !important;
+  }
+  .nav-links {
+    position: fixed !important;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px)) !important;
+    top: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: rgba(244, 241, 235, 0.9) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid var(--border) !important;
+    padding: 6px 12px !important;
+    border-radius: 40px !important;
+    display: flex !important;
+    gap: 4px !important;
+    z-index: 1000 !important;
+    box-shadow: 0 10px 30px rgba(26,23,20,0.12) !important;
+    width: max-content !important;
+    max-width: 95% !important;
+    justify-content: center !important;
+  }
+  .nav-links a {
+    padding: 6px 12px !important;
+    font-size: 11px !important;
+    border-radius: 30px !important;
+    border: 1px solid transparent !important;
+    white-space: nowrap !important;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    background: rgba(224, 92, 46, 0.08) !important;
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+  }
+
+  /* Reduce logo font sizing slightly */
+  .nav-logo {
+    font-size: 16px !important;
+  }
+
+  /* ===== CONTACT PAGE RESPONSIVENESS ===== */
+  #contact {
+    padding: 80px 20px 100px !important;
+    min-height: calc(100vh - 64px) !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .contact-desc {
+    margin-bottom: 24px !important;
+    font-size: 14px !important;
+  }
+  .contact-links {
+    max-width: 100% !important;
+  }
+  .contact-link {
+    padding: 16px 20px !important;
+  }
+
+  /* ===== FOOTER OPTIMIZATIONS ===== */
+  /* Vertical alignment and bottom offset to clear floating navigation bar */
+  footer {
+    padding: 24px 20px calc(96px + env(safe-area-inset-bottom, 0px)) 20px !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    text-align: center !important;
+  }
+}
+
+/* Extra Small Devices (< 480px) */
+@media (max-width: 480px) {
+  .home-title {
+    font-size: 36px !important;
+  }
+  .btn-primary, .btn-outline {
+    padding: 12px 24px !important;
+    font-size: 11px !important;
+  }
+  .home-ctas {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+  .home-ctas a {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .stat-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .about-profile-header {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 12px !important;
+  }
+  .exp-company {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+  }
+  .exp-company span {
+    align-self: flex-start !important;
+  }
+}
