@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Dipesh Maindolia</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor" id="cursor">
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo"><span style="color:var(--ink);font-weight:500">dipesh</span><span
+        style="color:var(--accent)">.</span><span style="color:var(--ink3)">data</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-status">
+      <div class="status-dot"></div>
+      Open to opportunities
+    </div>
+  </nav>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <div class="grid-overlay"></div>
+    <div class="section-header fade-up">
+      <div>
+        <div class="section-label">Profile</div>
+        <h2 class="section-title">About <span>Me</span></h2>
+      </div>
+      <div class="section-num">01</div>
+    </div>
+
+    <div class="about-grid fade-up">
+      <div>
+        <!-- Profile Header with Circular Photo -->
+        <div class="about-profile-header" style="display: flex; align-items: center; gap: 24px; margin-bottom: 28px;">
+          <div style="position: relative; flex-shrink: 0;">
+            <div
+              style="position: absolute; inset: -4px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); opacity: 0.8; z-index: 0;">
+            </div>
+            <img src="Image.png" alt="Dipesh Maindolia"
+              style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--surface); display: block; position: relative; z-index: 1;">
+          </div>
+          <div>
+            <h3
+              style="font-family: var(--display); font-size: 24px; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 4px;">
+              Dipesh Maindolia</h3>
+            <p
+              style="font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase;">
+              Data Science & IT Dual Degree</p>
+          </div>
+        </div>
+
+        <div class="about-bio">
+          <p>I'm a Data Science & Information Technology dual-degree student at <strong>IIT Madras</strong> and
+            <strong>College of Technology Pantnagar</strong>, passionate about transforming raw data into stories
+            that
+            drive real business decisions.
+          </p>
+          <p>My work spans the full analytics stack — from designing <strong>cloud-native data pipelines on AWS</strong>
+            to building ML models, crafting Power BI dashboards, and shipping product features at startups.</p>
+          <p>I cleared <strong>GATE CSE 2026 at 94.3 percentile</strong>, reflecting a strong foundation in computer
+            science fundamentals alongside applied data science. I believe data without insight is just numbers —
+            and insight without action is just noise.</p>
+          <p>When not wrangling datasets, I channel creativity into video editing and filmmaking — a <strong>2nd Place
+              finish</strong> in a college short film competition reflects that side of me.</p>
+        </div>
+
+        <div class="achievements-row" style="margin-top: 40px;">
+          <div class="achievement-card fade-up">
+            <span class="ach-icon">🏆</span>
+            <div class="ach-title">94.3 Percentile</div>
+            <div class="ach-desc">GATE CSE 2026 national computer science level foundation</div>
+          </div>
+          <div class="achievement-card fade-up" style="transition-delay:0.1s">
+            <span class="ach-icon">🎓</span>
+            <div class="ach-title">Convocation Digital Team</div>
+            <div class="ach-desc">Saved ₹1.5L by digitalizing security and invitations, reducing manual work</div>
+          </div>
+          <div class="achievement-card fade-up" style="transition-delay:0.2s">
+            <span class="ach-icon">⚡</span>
+            <div class="ach-title">AWS Optimized</div>
+            <div class="ach-desc">Optimized Lambda architectures </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="education-stack">
+        <div class="edu-card fade-up">
+          <div class="edu-year">2023 – Present</div>
+          <div class="edu-degree">B.S. in Data Science & Applications</div>
+          <div class="edu-inst">Indian Institute of Technology Madras</div>
+          <span class="edu-gpa">📊 CGPA: 6.85</span>
+        </div>
+
+        <div class="edu-card fade-up" style="transition-delay:0.15s">
+          <div class="edu-year">2021 – 2025</div>
+          <div class="edu-degree">B.Tech in Information Technology</div>
+          <div class="edu-inst">College of Technology Pantnagar</div>
+          <span class="edu-gpa">📊 CGPA: 7.33</span>
+        </div>
+
+        <div class="edu-card fade-up" style="transition-delay:0.3s">
+          <div class="edu-year">2019 – 2020</div>
+          <div class="edu-degree">Higher Secondary (Class XII)</div>
+          <div class="edu-inst">St. Joseph's Convent School</div>
+          <span class="edu-gpa">🎯 Percentage: 92%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Dipesh Maindolia — Data Analyst</p>
+    <p
+      style="color:var(--accent);opacity:0.7;font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-0.02em">
+      dipesh<span style="color:#e05c2e">.</span><span style="opacity:0.5;color:#f4f1eb">data</span></p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

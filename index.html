@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dipesh Maindolia — Data Analyst · dipesh.data</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+    rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor" id="cursor">
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo"><span style="color:var(--ink);font-weight:500">dipesh</span><span
+        style="color:var(--accent)">.</span><span style="color:var(--ink3)">data</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-status">
+      <div class="status-dot"></div>
+      Open to opportunities
+    </div>
+  </nav>
+
+  <!-- ===== HOME ===== -->
+  <section id="home">
+    <div class="grid-overlay"></div>
+    <canvas id="three-canvas"></canvas>
+
+    <div class="home-grid">
+      <div class="home-left fade-up">
+        <div class="home-tag">Data Analyst & ML Engineer</div>
+        <h1 class="home-title">Dipesh<br><span>Maindolia</span></h1>
+        <p class="home-subtitle">Turning data into decisions</p>
+        <p class="home-desc">IIT Madras Data Science student building end-to-end analytics pipelines, ML systems, and
+          cloud-native data architectures. From raw data to business insight.</p>
+        <div class="home-ctas">
+          <a href="projects.html" class="btn-primary">↓ View Projects</a>
+          <a href="contact.html" class="btn-outline">Get in Touch</a>
+        </div>
+      </div>
+
+      <div class="home-right">
+        <div class="stat-panel fade-up" style="transition-delay:0.2s">
+          <div>
+            <div class="skills-title" style="margin-bottom:20px">Performance Overview</div>
+            <div class="stat-grid">
+              <div class="stat-item">
+                <div class="stat-num" data-target="94.3"><span>0</span>%ile</div>
+                <div class="stat-label">GATE CSE 2026</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num" data-target="92"><span>0</span>%</div>
+                <div class="stat-label">Class XII</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num" style="font-size: 19px; font-weight: 600; text-transform: uppercase; color: var(--accent);">Intern</div>
+                <div class="stat-label">Product Analyst</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="skills-title" style="margin-bottom:10px">Activity Trend</div>
+            <div class="mini-chart" id="activityChart"></div>
+            <div class="live-ticker">
+              <div class="status-dot"></div>
+              <span id="liveTicker">Fetching latest metrics...</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-panel fade-up" style="transition-delay:0.3s">
+          <div class="skills-title">Technical Proficiency</div>
+          <div class="skill-row">
+            <span class="skill-name">Python</span>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="90" style="background:var(--accent)"></div>
+            </div>
+            <span class="skill-pct">90%</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">SQL</span>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="85" style="background:var(--accent2)"></div>
+            </div>
+            <span class="skill-pct">85%</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">AWS</span>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="80" style="background:var(--accent3)"></div>
+            </div>
+            <span class="skill-pct">80%</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">Power BI</span>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="78" style="background:var(--accent4)"></div>
+            </div>
+            <span class="skill-pct">78%</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">ML/AI</span>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="75" style="background:var(--accent)"></div>
+            </div>
+            <span class="skill-pct">75%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span class="ticker-item">GATE CSE 2026 <span>94.3 PERCENTILE</span></span>
+      <span class="ticker-item">•</span>
+      <span class="ticker-item">AWS SageMaker <span>XGBoost Pipeline</span></span>
+      <span class="ticker-item">•</span>
+      <span class="ticker-item">IIT Madras <span>Data Science</span></span>
+      <span class="ticker-item">•</span>
+      <span class="ticker-item">Power BI <span>Dashboards</span></span>
+      <span class="ticker-item">•</span>
+      <span class="ticker-item">Product Analyst <span>Interviewkit.ai</span></span>
+      <span class="ticker-item">•</span>
+      <span class="ticker-item">YouTube Data Pipeline <span>Medallion Architecture</span></span>
+      <span class="ticker-item">•</span>
+      <span class="ticker-item">GATE DA 2025 <span>86 PERCENTILE</span></span>
+      <span class="ticker-item">•</span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-item">GATE CSE 2026 <span>94.3 PERCENTILE</span></span>
+      <span class="ticker-item">•</span>
+      <span class="ticker-item">AWS SageMaker <span>XGBoost Pipeline</span></span>
+      <span class="ticker-item">•</span>
+      <span class="ticker-item">IIT Madras <span>Data Science</span></span>
+      <span class="ticker-item">•</span>
+      <span class="ticker-item">Power BI <span>Dashboards</span></span>
+      <span class="ticker-item">•</span>
+      <span class="ticker-item">Product Analyst <span>Interviewkit.ai</span></span>
+      <span class="ticker-item">•</span>
+      <span class="ticker-item">YouTube Data Pipeline <span>Medallion Architecture</span></span>
+      <span class="ticker-item">•</span>
+      <span class="ticker-item">GATE DA 2025 <span>86 PERCENTILE</span></span>
+      <span class="ticker-item">•</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Dipesh Maindolia — Data Analyst</p>
+    <p
+      style="color:var(--accent);opacity:0.7;font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-0.02em">
+      dipesh<span style="color:#e05c2e">.</span><span style="opacity:0.5;color:#f4f1eb">data</span></p>
+  </footer>
+
+  <!-- COMMON JS -->
+  <script src="main.js"></script>
+
+  <!-- HOME-SPECIFIC SCRIPTS (Three.js and Mini activity chart) -->
+  <script>
+    // ===== THREE.JS PARTICLE FIELD =====
+    (function () {
+      const canvas = document.getElementById('three-canvas');
+      if (!canvas) return;
+
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(60, canvas.offsetWidth / canvas.offsetHeight, 0.1, 100);
+      camera.position.set(0, 0, 4);
+
+      // Particles
+      const count = 300;
+      const geom = new THREE.BufferGeometry();
+      const pos = new Float32Array(count * 3);
+      const speeds = [];
+
+      for (let i = 0; i < count * 3; i += 3) {
+        pos[i] = (Math.random() - 0.5) * 6;     // X
+        pos[i + 1] = (Math.random() - 0.5) * 4;   // Y
+        pos[i + 2] = (Math.random() - 0.5) * 3;   // Z
+        speeds.push((Math.random() + 0.2) * 0.002);
+      }
+
+      geom.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+
+      // Custom shader for round soft particles
+      const material = new THREE.PointsMaterial({
+        size: 0.08,
+        color: 0xe05c2e,
+        transparent: true,
+        opacity: 0.45,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending
+      });
+
+      // Soft circle texture using simple canvas rendering
+      const pCanvas = document.createElement('canvas');
+      pCanvas.width = 16; pCanvas.height = 16;
+      const pCtx = pCanvas.getContext('2d');
+      const grad = pCtx.createRadialGradient(8, 8, 0, 8, 8, 8);
+      grad.addColorStop(0, 'rgba(255,255,255,1)');
+      grad.addColorStop(1, 'rgba(255,255,255,0)');
+      pCtx.fillStyle = grad; pCtx.fillRect(0, 0, 16, 16);
+      material.map = new THREE.CanvasTexture(pCanvas);
+
+      const points = new THREE.Points(geom, material);
+      scene.add(points);
+
+      // Flow stream line
+      const streamGeom = new THREE.BufferGeometry();
+      const streamPos = new Float32Array(50 * 3);
+      for (let i = 0; i < 50 * 3; i += 3) {
+        streamPos[i] = 1.2;
+        streamPos[i + 1] = (i / 150 - 0.5) * 4;
+        streamPos[i + 2] = 0;
+      }
+      streamGeom.setAttribute('position', new THREE.BufferAttribute(streamPos, 3));
+      const streamMat = new THREE.LineBasicMaterial({ color: 0x2e7ae0, transparent: true, opacity: 0.2 });
+      const streamLine = new THREE.Line(streamGeom, streamMat);
+      scene.add(streamLine);
+
+      // Mouse interactivity
+      let targetX = 0, targetY = 0;
+      window.addEventListener('mousemove', e => {
+        targetX = (e.clientX / window.innerWidth - 0.5) * 0.5;
+        targetY = -(e.clientY / window.innerHeight - 0.5) * 0.5;
+      });
+
+      // Animation Loop
+      function tick() {
+        points.rotation.y += 0.001;
+        points.rotation.x += 0.0003;
+
+        // Gentle camera sway
+        camera.position.x += (targetX - camera.position.x) * 0.05;
+        camera.position.y += (targetY - camera.position.y) * 0.05;
+        camera.lookAt(scene.position);
+
+        // Dynamic stream flow
+        const arr = streamGeom.attributes.position.array;
+        for (let i = 1; i < 150; i += 3) {
+          arr[i] -= 0.01;
+          if (arr[i] < -2) arr[i] = 2;
+        }
+        streamGeom.attributes.position.needsUpdate = true;
+
+        renderer.render(scene, camera);
+        requestAnimationFrame(tick);
+      }
+      tick();
+
+      // Resize
+      window.addEventListener('resize', () => {
+        camera.aspect = canvas.offsetWidth / canvas.offsetHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+      });
+    })();
+
+    // ===== MINI ACTIVITY CHART =====
+    (function () {
+      const chart = document.getElementById('activityChart');
+      if (!chart) return;
+      const vals = [30, 55, 40, 80, 65, 90, 72, 85, 95, 70, 88, 100];
+      const colors = ['#e05c2e', '#2e7ae0', '#2ea86e', '#d4a017', '#e05c2e', '#2e7ae0', '#2ea86e', '#d4a017', '#e05c2e', '#2e7ae0', '#2ea86e', '#e05c2e'];
+      vals.forEach((v, i) => {
+        const bar = document.createElement('div');
+        bar.className = 'mini-bar';
+        bar.style.height = '4px';
+        bar.style.background = colors[i];
+        bar.style.borderRadius = '2px';
+        chart.appendChild(bar);
+        setTimeout(() => { bar.style.height = v * 0.48 + 'px'; }, 400 + i * 60);
+      });
+    })();
+  </script>
+</body>
+
+</html>

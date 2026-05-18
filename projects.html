@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects Dashboard — Dipesh Maindolia</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Scroll-free page layout */
+  body {
+    overflow: hidden; /* Prevent body scrolling */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dashboard-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    height: calc(100vh - 64px); /* Full height minus header */
+    margin-top: 64px;
+    background: var(--bg);
+    overflow: hidden;
+  }
+
+  /* Left Pane: Selection list */
+  .pane-left {
+    border-right: 1px solid var(--border);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    background: var(--bg2);
+    overflow-y: auto;
+  }
+  .pane-left::-webkit-scrollbar { width: 3px; }
+  .pane-left::-webkit-scrollbar-thumb { background: var(--border); }
+
+  .dashboard-title-area {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .dash-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .dash-title {
+    font-family: var(--display);
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .project-selector-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .selector-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: none;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-align: left;
+    outline: none;
+  }
+  .selector-item:hover {
+    transform: translateX(4px);
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(224,92,46,0.06);
+  }
+  .selector-item.active {
+    border-color: var(--accent);
+    background: var(--surface);
+    box-shadow: 0 6px 16px rgba(224,92,46,0.09);
+    position: relative;
+  }
+  .selector-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 12px; bottom: 12px; width: 3px;
+    background: var(--accent);
+    border-radius: 0 2px 2px 0;
+  }
+  
+  .selector-badge {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--accent3);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .selector-item.active .selector-badge {
+    color: var(--accent);
+  }
+  .selector-name {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  
+  .skills-mini-cloud {
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    margin-top: auto;
+  }
+  .cloud-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .mini-pill {
+    font-family: var(--mono);
+    font-size: 9px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--ink2);
+  }
+
+  /* Right Pane: Immersive details card */
+  .pane-right {
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+    position: relative;
+  }
+
+  .interactive-details-card {
+    width: 100%;
+    max-width: 820px;
+    height: 100%;
+    max-height: 520px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    overflow: hidden;
+    box-shadow: 0 16px 40px var(--shadow);
+  }
+
+  /* Right pane card details */
+  .card-detail-side {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+  }
+  .card-detail-side::-webkit-scrollbar { width: 3px; }
+  .card-detail-side::-webkit-scrollbar-thumb { background: var(--border); }
+
+  .project-header-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .detail-badge {
+    align-self: flex-start;
+    font-family: var(--mono);
+    font-size: 9px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    background: rgba(224,92,46,0.12);
+    color: var(--accent);
+    border: 1px solid rgba(224,92,46,0.25);
+    letter-spacing: 0.05em;
+  }
+  .detail-name {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  
+  .detail-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink2);
+  }
+  
+  .detail-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+  }
+  .detail-bullets li {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--ink3);
+    padding-left: 16px;
+    position: relative;
+  }
+  .detail-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 11px;
+  }
+
+  .detail-tech-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .project-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .project-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 7px 12px;
+    border-radius: 5px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    transition: all 0.2s ease;
+    cursor: none;
+  }
+  .project-btn:hover {
+    background: var(--surface);
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(224,92,46,0.06);
+  }
+  .project-btn svg {
+    width: 11px;
+    height: 11px;
+    fill: currentColor;
+  }
+  
+  .card-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+  }
+  .card-metric-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 8px;
+    text-align: center;
+  }
+  .metric-value {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .metric-label {
+    font-family: var(--mono);
+    font-size: 8px;
+    color: var(--ink3);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* Right pane card canvas */
+  .card-vis-side {
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-vis-side canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor" id="cursor">
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo"><span style="color:var(--ink);font-weight:500">dipesh</span><span style="color:var(--accent)">.</span><span style="color:var(--ink3)">data</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-status">
+    <div class="status-dot"></div>
+    Open to opportunities
+  </div>
+</nav>
+
+<!-- ===== SPLIT-PANE DASHBOARD ===== -->
+<div class="dashboard-container">
+  <!-- Left Selection Panel -->
+  <div class="pane-left">
+    <div class="dashboard-title-area">
+      <span class="dash-label">Interactive</span>
+      <h2 class="dash-title">Projects</h2>
+    </div>
+
+    <div class="project-selector-list">
+      <button class="selector-item active" onclick="switchProject(0)">
+        <span class="selector-badge">AWS Pipeline</span>
+        <span class="selector-name">YouTube Trending Data Pipeline</span>
+      </button>
+
+      <button class="selector-item" onclick="switchProject(1)">
+        <span class="selector-badge">ML · SageMaker</span>
+        <span class="selector-name">Flight Price Prediction ML System</span>
+      </button>
+
+      <button class="selector-item" onclick="switchProject(2)">
+        <span class="selector-badge">BI & Analytics</span>
+        <span class="selector-name">Ola Data Analytics Dashboard</span>
+      </button>
+    </div>
+
+    <!-- Mini skills tag cloud on side -->
+    <div class="skills-mini-cloud">
+      <div class="cloud-title">Core Competencies</div>
+      <div class="pill-row">
+        <span class="mini-pill">Python</span>
+        <span class="mini-pill">AWS Glue</span>
+        <span class="mini-pill">SageMaker</span>
+        <span class="mini-pill">Lambda</span>
+        <span class="mini-pill">Power BI</span>
+        <span class="mini-pill">SQL</span>
+        <span class="mini-pill">DAX</span>
+        <span class="mini-pill">Bayesian Opt</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Visual & Detail Panel -->
+  <div class="pane-right">
+    <div class="interactive-details-card">
+      <!-- Left side of card: details text -->
+      <div class="card-detail-side">
+        <div class="project-header-section">
+          <span class="detail-badge" id="projBadge">AWS Pipeline</span>
+          <h3 class="detail-name" id="projName">YouTube Trending Data Pipeline</h3>
+        </div>
+
+        <div class="project-actions">
+          <a href="#" id="projGithub" class="project-btn" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            GitHub Repo
+          </a>
+          <a href="#" id="projSummary" class="project-btn" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M14 2h-10c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-12l-6-6zm4 18h-12v-2h12v2zm0-4h-12v-2h12v2zm-5-6v-5l5 5h-5z"/></svg>
+            Project Summary
+          </a>
+        </div>
+
+        <p class="detail-desc" id="projDesc">Fully automated end-to-end data pipeline built on AWS that continuously ingests YouTube trending data via the YouTube Data API, cleans and transforms it through multiple stages, and stores it in structured format.</p>
+
+        <ul class="detail-bullets" id="projBullets">
+          <li>Implemented Medallion Architecture with Bronze, Silver, and Gold layers.</li>
+          <li>Used AWS Lambda for triggers, Glue for distributed ETL, and S3 for partition storage.</li>
+          <li>Orchestrated entire pipeline with Step Functions, achieving 100% automation.</li>
+        </ul>
+
+        <div class="detail-tech-cloud" id="projTech">
+          <span class="tech-tag">AWS S3</span>
+          <span class="tech-tag">Lambda</span>
+          <span class="tech-tag">AWS Glue</span>
+          <span class="tech-tag">Step Functions</span>
+        </div>
+
+        <div class="card-metrics-grid" id="projMetrics">
+          <div class="card-metric-card">
+            <div class="metric-value">3</div>
+            <div class="metric-label">Data Layers</div>
+          </div>
+          <div class="card-metric-card">
+            <div class="metric-value">100%</div>
+            <div class="metric-label">Automated</div>
+          </div>
+          <div class="card-metric-card">
+            <div class="metric-value">AWS</div>
+            <div class="metric-label">Cloud Native</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side of card: Live Canvas Visualization -->
+      <div class="card-vis-side">
+        <canvas id="dashboardCanvas"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="main.js"></script>
+<script>
+  // Project datasets
+  const DATA = [
+    {
+      name: "YouTube Trending Data Pipeline",
+      badge: "AWS Pipeline",
+      desc: "Fully automated end-to-end data pipeline built on AWS that continuously ingests YouTube trending data via the YouTube Data API, cleans and transforms it through multiple stages, and stores it in structured format.",
+      bullets: [
+        "Implemented Medallion Architecture with Bronze, Silver, and Gold layers.",
+        "Used AWS Lambda for triggers, Glue for distributed ETL, and S3 for partition storage.",
+        "Orchestrated entire pipeline with Step Functions, achieving 100% automation."
+      ],
+      tech: ["AWS S3", "Lambda", "AWS Glue", "Step Functions", "Python", "Medallion Arch"],
+      metrics: [
+        { val: "3", label: "Data Layers" },
+        { val: "100%", label: "Automated" },
+        { val: "AWS", label: "Cloud Native" }
+      ],
+      type: "pipeline",
+      github: "https://github.com/dipeshmaindolia001",
+      summary: "#"
+    },
+    {
+      name: "Flight Price Prediction ML System",
+      badge: "ML · SageMaker",
+      desc: "End-to-end machine learning system on AWS SageMaker that predicts flight prices in real time. The pipeline covers preprocessing, Bayesian optimization tuning, model training, and a live Streamlit deployment.",
+      bullets: [
+        "Engineered rich features from raw flight schedules using robust scikit-learn Pipelines.",
+        "Optimized models via SageMaker HyperparameterTuner with Bayesian search.",
+        "Deployed stream interface for instantaneous live price predictions in the browser."
+      ],
+      tech: ["SageMaker", "XGBoost", "scikit-learn", "Streamlit", "Bayesian Opt", "Python"],
+      metrics: [
+        { val: "XGB", label: "Model" },
+        { val: "Live", label: "Deployed" },
+        { val: "HPO", label: "Bayesian" }
+      ],
+      type: "prediction",
+      github: "https://github.com/dipeshmaindolia001",
+      summary: "#"
+    },
+    {
+      name: "Ola Data Analytics Dashboard",
+      badge: "BI & Analytics",
+      desc: "Comprehensive business intelligence project analyzing Ola ride-booking datasets using SQL, Excel, and Power BI to surface operational patterns.",
+      bullets: [
+        "Wrote complex SQL scripts to filter and model ride books across peaks and zones.",
+        "Built interactive dashboards with KPI drill-throughs and trend indicators.",
+        "Delivered a reporting layer with DAX measures tracking booking drop-offs and cancel reasons."
+      ],
+      tech: ["Power BI", "SQL", "Excel", "DAX", "Data Modeling", "KPI Design"],
+      metrics: [
+        { val: "5+", label: "KPI Views" },
+        { val: "SQL", label: "Backend" },
+        { val: "BI", label: "Dashboard" }
+      ],
+      type: "dashboard",
+      github: "https://github.com/dipeshmaindolia001",
+      summary: "#"
+    }
+  ];
+
+  let currentAnimId = null;
+  const canvas = document.getElementById('dashboardCanvas');
+  const ctx = canvas.getContext('2d');
+
+  function resizeCanvas() {
+    canvas.width = canvas.offsetWidth || 440;
+    canvas.height = canvas.offsetHeight || 520;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  function switchProject(idx) {
+    // 1. Update selectors active state
+    const buttons = document.querySelectorAll('.selector-item');
+    buttons.forEach((b, i) => {
+      if (i === idx) b.classList.add('active');
+      else b.classList.remove('active');
+    });
+
+    // 2. Load data
+    const p = DATA[idx];
+    document.getElementById('projBadge').textContent = p.badge;
+    document.getElementById('projName').textContent = p.name;
+    document.getElementById('projDesc').textContent = p.desc;
+    
+    document.getElementById('projBullets').innerHTML = p.bullets.map(b => `<li>${b}</li>`).join('');
+    document.getElementById('projTech').innerHTML = p.tech.map(t => `<span class="tech-tag">${t}</span>`).join('');
+    document.getElementById('projGithub').href = p.github;
+    document.getElementById('projSummary').href = p.summary;
+    document.getElementById('projMetrics').innerHTML = p.metrics.map(m => `
+      <div class="card-metric-card">
+        <div class="metric-value">${m.val}</div>
+        <div class="metric-label">${m.label}</div>
+      </div>
+    `).join('');
+
+    // 3. Trigger canvas switches
+    if (currentAnimId) cancelAnimationFrame(currentAnimId);
+    resizeCanvas();
+
+    if (p.type === 'pipeline') drawPipeline();
+    else if (p.type === 'prediction') drawPrediction();
+    else drawDashboard();
+  }
+
+  // --- Pipeline Animation ---
+  function drawPipeline() {
+    const W = canvas.width, H = canvas.height;
+    const nodes = [
+      { x: W*0.2,  y: H*0.2,  label: 'API Ingest', color: '#e05c2e' },
+      { x: W*0.5,  y: H*0.35, label: 'Bronze S3', color: '#d4a017' },
+      { x: W*0.8,  y: H*0.2,  label: 'Lambda', color: '#2e7ae0' },
+      { x: W*0.5,  y: H*0.55, label: 'Glue ETL', color: '#2ea86e' },
+      { x: W*0.2,  y: H*0.7,  label: 'Silver S3', color: '#2e7ae0' },
+      { x: W*0.8,  y: H*0.7,  label: 'Step Fn', color: '#e05c2e' },
+      { x: W*0.5,  y: H*0.85, label: 'Gold S3', color: '#2ea86e' },
+    ];
+    const edges = [[0,1],[2,1],[1,3],[3,4],[3,5],[4,6],[5,6]];
+    const particles = [];
+    let t = 0;
+
+    function render() {
+      ctx.fillStyle = '#111';
+      ctx.fillRect(0,0,W,H);
+
+      // grid
+      ctx.strokeStyle = 'rgba(255,255,255,0.025)';
+      for (let x=0; x<W; x+=30) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+      for (let y=0; y<H; y+=30) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+
+      // draw edges
+      edges.forEach(([a,b]) => {
+        ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([4,4]);
+        ctx.beginPath(); ctx.moveTo(nodes[a].x, nodes[a].y); ctx.lineTo(nodes[b].x, nodes[b].y); ctx.stroke();
+        ctx.setLineDash([]);
+      });
+
+      // draw particles
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.prog += 0.015;
+        if (p.prog >= 1) { particles.splice(i,1); continue; }
+        const px = p.fx + (p.tx - p.fx)*p.prog;
+        const py = p.fy + (p.ty - p.fy)*p.prog;
+        ctx.beginPath(); ctx.arc(px,py,3.5,0,Math.PI*2);
+        ctx.fillStyle = p.color; ctx.shadowColor = p.color; ctx.shadowBlur = 10;
+        ctx.fill(); ctx.shadowBlur = 0;
+      }
+
+      // draw nodes
+      nodes.forEach(n => {
+        ctx.beginPath(); ctx.arc(n.x, n.y, 24, 0, Math.PI*2);
+        ctx.fillStyle = '#181615'; ctx.strokeStyle = n.color; ctx.lineWidth = 2;
+        ctx.fill(); ctx.stroke();
+        
+        ctx.fillStyle = n.color; ctx.font = 'bold 8.5px DM Mono, monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        const words = n.label.split(' ');
+        if (words.length > 1) {
+          ctx.fillText(words[0], n.x, n.y - 6);
+          ctx.fillText(words[1], n.x, n.y + 6);
+        } else {
+          ctx.fillText(n.label, n.x, n.y);
+        }
+      });
+
+      if (t % 45 === 0) {
+        const e = edges[Math.floor(Math.random()*edges.length)];
+        const from = nodes[e[0]], to = nodes[e[1]];
+        particles.push({ fx: from.x, fy: from.y, tx: to.x, ty: to.y, prog: 0, color: from.color });
+      }
+      t++;
+      currentAnimId = requestAnimationFrame(render);
+    }
+    render();
+  }
+
+  // --- Prediction Animation ---
+  function drawPrediction() {
+    const W = canvas.width, H = canvas.height;
+    const actual = Array.from({length: 60}, (_,i) => H*0.4 + Math.sin(i*0.3)*H*0.15 + Math.random()*12 + i*0.5);
+    const pred = actual.map(v => v + (Math.random() - 0.5)*18);
+    let t = 0;
+
+    function render() {
+      ctx.fillStyle = '#111';
+      ctx.fillRect(0,0,W,H);
+
+      // grid
+      ctx.strokeStyle = 'rgba(255,255,255,0.025)';
+      for (let x=0; x<W; x+=30) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+      for (let y=0; y<H; y+=30) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+
+      const off = Math.floor(t*0.35) % 25, sl = 35;
+      
+      // Plot actual line
+      ctx.beginPath(); ctx.strokeStyle = '#e05c2e'; ctx.lineWidth = 2.5;
+      for (let i=0; i<sl; i++) {
+        const idx = (off + i) % actual.length;
+        const x = (i/sl)*W; const y = H - actual[idx] - 30;
+        i === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+
+      // Plot predicted line (dashed)
+      ctx.beginPath(); ctx.strokeStyle = '#2e7ae0'; ctx.lineWidth = 1.8; ctx.setLineDash([5,5]);
+      for (let i=0; i<sl; i++) {
+        const idx = (off + i) % pred.length;
+        const x = (i/sl)*W; const y = H - pred[idx] - 30;
+        i === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+      }
+      ctx.stroke(); ctx.setLineDash([]);
+
+      // Legend
+      ctx.font = 'bold 9px DM Mono, monospace'; ctx.textAlign = 'left';
+      ctx.fillStyle = '#e05c2e'; ctx.fillText('● actual flight price', 16, 24);
+      ctx.fillStyle = '#2e7ae0'; ctx.fillText('○ predicted target bounds', 16, 40);
+
+      // Animated glowing endpoint
+      const lastIdx = (off + sl - 1) % actual.length;
+      const lx = W - 10; const ly = H - actual[lastIdx] - 30;
+      ctx.beginPath(); ctx.arc(lx, ly, 5, 0, Math.PI*2);
+      ctx.fillStyle = '#e05c2e'; ctx.shadowColor = '#e05c2e'; ctx.shadowBlur = 12; ctx.fill(); ctx.shadowBlur = 0;
+
+      t++;
+      currentAnimId = requestAnimationFrame(render);
+    }
+    render();
+  }
+
+  // --- Dashboard/BI Bar Animation ---
+  function drawDashboard() {
+    const W = canvas.width, H = canvas.height;
+    const cats = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+    const rides = [80, 110, 65, 130, 95, 50, 120];
+    let t = 0;
+
+    function render() {
+      ctx.fillStyle = '#111';
+      ctx.fillRect(0,0,W,H);
+
+      const anim = Math.min(t/60, 1);
+      const barW = (W - 60) / cats.length;
+
+      cats.forEach((c, i) => {
+        const h = (rides[i] / 150) * (H * 0.5) * anim;
+        const x = 30 + i * barW;
+        const y = H*0.65 - h;
+
+        const grad = ctx.createLinearGradient(0, y, 0, H*0.65);
+        grad.addColorStop(0, i%2===0 ? '#e05c2e' : '#2e7ae0');
+        grad.addColorStop(1, 'rgba(224,92,46,0.05)');
+
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.roundRect(x+6, y, barW-12, h, [3,3,0,0]);
+        ctx.fill();
+
+        ctx.fillStyle = 'rgba(255,255,255,0.3)';
+        ctx.font = '8px DM Mono'; ctx.textAlign = 'center';
+        ctx.fillText(c, x + barW/2, H*0.7);
+      });
+
+      // Simple BI Cards underneath
+      const info = [['Revenue', '₹4.2L'], ['Rides', '2.3K']];
+      info.forEach(([lbl, val], idx) => {
+        const rx = 30 + idx * (W - 60)/2;
+        const ry = H*0.78;
+        const rw = (W - 80)/2;
+
+        ctx.fillStyle = 'rgba(255,255,255,0.03)';
+        ctx.beginPath(); ctx.roundRect(rx, ry, rw, 44, 4); ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,0.05)'; ctx.stroke();
+
+        ctx.fillStyle = 'rgba(255,255,255,0.4)'; ctx.font = '7.5px DM Mono'; ctx.fillText(lbl, rx+rw/2, ry+14);
+        ctx.fillStyle = '#e05c2e'; ctx.font = 'bold 11px DM Mono'; ctx.fillText(val, rx+rw/2, ry+32);
+      });
+
+      t++;
+      currentAnimId = requestAnimationFrame(render);
+    }
+    render();
+  }
+
+  // Init default view
+  switchProject(0);
+</script>
+</body>
+</html>
