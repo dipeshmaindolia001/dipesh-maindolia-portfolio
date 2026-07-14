@@ -3,7 +3,7 @@ name: Compile LaTeX Resume
 on:
   push:
     paths:
-      - 'resume/Resume.tex'
+      - 'Resume/Resume.tex'
   workflow_dispatch:
 
 jobs:
@@ -18,11 +18,11 @@ jobs:
       - name: Compile LaTeX Document
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: resume/Resume.tex
+          root_file: Resume/Resume.tex
 
       - name: Move PDF to Root
         run: |
-          mv resume/Resume.pdf resume.pdf
+          mv Resume/Resume.pdf resume.pdf
 
       - name: Commit and Push compiled PDF
         run: |
