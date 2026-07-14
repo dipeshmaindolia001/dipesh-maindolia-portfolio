@@ -22,7 +22,8 @@ jobs:
 
       - name: Move PDF to Root
         run: |
-          mv Resume/Resume.pdf resume.pdf
+          # Robust search to find the compiled PDF and move it to root as resume.pdf
+          find . -name "*.pdf" -exec mv {} resume.pdf \;
 
       - name: Commit and Push compiled PDF
         run: |
