@@ -1,0 +1,33 @@
+name: Compile LaTeX Resume
+
+on:
+  push:
+    paths:
+      - 'resume/Resume.tex'
+  workflow_dispatch:
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Enables pushing commits back to the repo
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX Document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume/Resume.tex
+
+      - name: Move PDF to Root
+        run: |
+          mv resume/Resume.pdf resume.pdf
+
+      - name: Commit and Push compiled PDF
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add resume.pdf
+          git commit -m "chore: auto-compile Resume.tex to resume.pdf [skip ci]" || echo "No changes to commit"
+          git push
