@@ -1,0 +1,310 @@
+/* ============================================================
+   Dipesh Maindolia — Portfolio
+   Concept: a resume that behaves like paper until you touch it.
+   Default state = monochrome, printed, still.
+   On interaction = ink turns to highlighter color, numbers wake up.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+  --paper: #FAF9F5;
+  --paper-dim: #F2F0E9;
+  --ink: #0A0A0A;          /* Much deeper dark ink */
+  --graphite: #374151;     /* Highly readable slate-700 body text */
+  --graphite-soft: #57534E; /* stone-600 for sub-labels and eyebrows */
+  --line: #D6D3D1;         /* stone-300 for clean page separators */
+  --accent: #1D4ED8;       /* Deep royal blue accent */
+  --accent-soft: #EFF6FF;  /* Soft light blue tint for tags */
+  --highlight: #F59E0B;    /* Amber highlighter color */
+  --highlight-soft: #FEF3C7; /* Soft amber highlight */
+  --max-w: 780px;
+}
+
+*{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a{ color: inherit; text-decoration: none; }
+
+.wrap{
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------- Header (identical across pages, like a resume header) ---------- */
+
+header.masthead{
+  padding-top: 56px;
+  padding-bottom: 0;
+}
+
+.masthead h1{
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: clamp(2.4rem, 6vw, 3.4rem);
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+
+.contact-row{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--graphite);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-bottom: 28px;
+}
+
+.contact-row a{
+  border-bottom: 1px solid transparent;
+  transition: color .15s ease, border-color .15s ease;
+}
+.contact-row a:hover{
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* nav — resume section labels made clickable */
+nav.sections{
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+nav.sections ul{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+nav.sections li{ margin: 0; }
+nav.sections a{
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  padding: 14px 16px;
+  border-bottom: 2px solid transparent;
+  transition: color .15s ease, border-color .15s ease;
+}
+nav.sections a:hover,
+nav.sections a.active{
+  color: var(--ink);
+  border-bottom-color: var(--highlight);
+}
+nav.sections a.active{ color: var(--accent); }
+
+main{ padding-top: 44px; padding-bottom: 90px; }
+
+/* ---------- Section scaffolding ---------- */
+
+.eyebrow{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--graphite-soft);
+  margin: 0 0 6px;
+}
+
+h2.section-title{
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 2.1rem;
+  margin: 0 0 10px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.section-lede{
+  color: var(--graphite);
+  max-width: 58ch;
+  margin: 0 0 40px;
+}
+
+hr.rule{
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 48px 0;
+}
+
+/* ---------- Highlight-on-hover line item (the signature interaction) ---------- */
+
+.line{
+  position: relative;
+  padding: 10px 12px;
+  margin: 0 -12px;
+  border-radius: 3px;
+  transition: background .18s ease;
+  cursor: default;
+}
+.line:hover{
+  background: var(--highlight-soft);
+}
+.line:hover::before{
+  content: "";
+  position: absolute;
+  left: -1px; top: 8px; bottom: 8px;
+  width: 3px;
+  background: var(--highlight);
+  border-radius: 2px;
+}
+
+/* ---------- Stat blocks (grayscale -> ink to color count-up) ---------- */
+
+.stat-row{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 28px;
+  margin: 40px 0 8px;
+}
+.stat{
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+.stat .num{
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 2.1rem;
+  color: var(--graphite-soft);
+  transition: color .5s ease;
+  display: inline-block;
+}
+.stat.on .num{ color: var(--accent); }
+.stat .label{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--graphite);
+  letter-spacing: 0.02em;
+  margin-top: 4px;
+}
+
+/* ---------- Cards (project / role snapshot) ---------- */
+
+.card{
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 20px 22px;
+  margin-bottom: 16px;
+  transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+.card:hover{
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -14px rgba(47,93,224,0.35);
+}
+.card .card-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.card h3{
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin: 0;
+  color: var(--ink);
+}
+.card .meta{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--graphite);
+  white-space: nowrap;
+}
+.card p{ color: var(--graphite); margin: 8px 0 10px; }
+.tags{ display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.tag{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--ink);
+  background: var(--paper-dim);
+  border: 1px solid var(--line);
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+.card-links{ display: flex; gap: 14px; margin-top: 12px; }
+.card-links a{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.74rem;
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent-soft);
+}
+.card-links a:hover{ border-bottom-color: var(--accent); }
+
+/* ---------- Reveal-on-scroll ---------- */
+.reveal{
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.reveal.in{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Footer ---------- */
+footer{
+  border-top: 1px solid var(--line);
+  padding: 26px 0 60px;
+}
+footer .wrap{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--graphite);
+}
+footer a:hover{ color: var(--accent); }
+
+/* ---------- Home hero specifics ---------- */
+.hero-line{
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  color: var(--ink);
+  max-width: 20ch;
+  margin: 6px 0 0;
+}
+.hero-sub{
+  color: var(--graphite);
+  max-width: 56ch;
+  margin: 18px 0 0;
+}
+
+.snap-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+
+@media (max-width: 560px){
+  nav.sections a{ padding: 12px 10px; font-size: 0.66rem; }
+  .masthead{ padding-top: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ transition: none !important; scroll-behavior: auto !important; }
+  .reveal{ opacity: 1; transform: none; }
+}
