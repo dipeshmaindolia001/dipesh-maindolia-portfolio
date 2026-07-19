@@ -1,51 +1,33 @@
 % ------------------------
-% Resume (Trigger Compilation - Update 2)
+% Resume - Data Analyst
 % Author : Dipesh Maindolia
 % ------------------------
 
-\documentclass[letterpaper,8.5pt]{article}
+\documentclass[letterpaper,8pt]{article}
 
 \usepackage[empty]{fullpage}
+\usepackage[margin=0.35in, top=0.18in, bottom=0.18in]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{xcolor}
 \usepackage{fontenc}
-\usepackage{lmodern}
-\usepackage{tikz}
-\usetikzlibrary{arrows.meta}
 
 \pagestyle{empty}
 
-% ---------- MARGINS ----------
-\addtolength{\oddsidemargin}{-0.65in}
-\addtolength{\evensidemargin}{-0.65in}
-\addtolength{\textwidth}{1.30in}
-\addtolength{\topmargin}{-0.95in}
-\addtolength{\textheight}{2.40in}
-
 \urlstyle{same}
-\raggedright
-\linespread{0.85}
+\linespread{0.87}
+\setlength{\parindent}{0pt}
 
 \setlength{\tabcolsep}{0in}
 \setlength{\parskip}{0pt}
 
 \definecolor{linkblue}{RGB}{26, 86, 160}
 
-% ---------- LINK ICON ----------
-\newcommand{\linkicon}[1]{\href{#1}{\raisebox{-0.1em}{%
-\begin{tikzpicture}[baseline, x=0.4pt, y=0.4pt, line width=2.6, line cap=round, line join=round, color=linkblue]
-  \draw (4,4) -- (4,20) -- (13,20);
-  \draw (4,4) -- (20,4) -- (20,13);
-  \draw[-{Latex[length=3pt,width=2.6pt]}] (9,11) -- (24,26);
-\end{tikzpicture}%
-}}}
-
 \setlist[itemize]{
   leftmargin=0.18in,
   noitemsep,
-  topsep=0.5pt,
+  topsep=1pt,
   parsep=0pt,
   partopsep=0pt
 }
@@ -53,9 +35,10 @@
 % ---------- SECTION STYLE ----------
 \titleformat{\section}{
   \vspace{0pt}\scshape\raggedright\normalsize\bfseries
-}{}{0em}{}[\titlerule \vspace{0.5pt}]
+}{}{0em}{}[\titlerule \vspace{0pt}]
 
 % ---------- CUSTOM COMMANDS ----------
+% Left: role/title (bold) + right-aligned italic date
 \newcommand{\resumeSubheading}[4]{
   \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
     \textbf{#1} & \small\textit{#2} \\
@@ -63,9 +46,10 @@
   \end{tabular*}
 }
 
-\newcommand{\resumeProject}[2]{
+% Left: project title (bold) + right-aligned GitHub hyperlink
+\newcommand{\resumeProject}[3]{
   \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
-    \textbf{#1} & \textit{\small #2} \\
+    \textbf{#1} \small{-- #2} & \small\href{#3}{\color{linkblue}\underline{GitHub}} \\
   \end{tabular*}
 }
 
@@ -75,6 +59,7 @@
 % ---------- HEADER ----------
 \begin{center}
     {\LARGE \textbf{Dipesh Maindolia}} \\[2pt]
+    {\small \textit{Data Analyst}} \\[2pt]
     {\small
     Ramnagar, Uttarakhand, India \textbar\
     +91 7017982390 \textbar\
@@ -86,129 +71,114 @@
     }
 \end{center}
 
-\vspace{-6pt}
+\vspace{-11pt}
+
+% ---------- SUMMARY ----------
+\section{Professional Summary}
+\small{Data Analyst with hands-on experience in SQL, Python, Excel, and Power BI, backed by cloud and ML project
+work on AWS. Skilled in building data pipelines, dashboards, and predictive models that turn raw data into
+actionable insights. GATE CSE and GATE DA qualified.}
+
+\vspace{-11pt}
+
+% ---------- SKILLS ----------
+\section{Technical Skills}
+\begin{itemize}
+    \item \textbf{Programming \& Query Languages:} Python, SQL, C++
+    \item \textbf{Data Analysis \& BI Tools:} Excel (Advanced formulas, Pivot Tables), Power BI, Power Query, DAX, Data Visualization, Dashboarding
+    \item \textbf{Databases:} SQL, Data Modeling, ETL / Data Pipelines
+    \item \textbf{Cloud \& Machine Learning:} AWS (S3, Lambda, Glue, Step Functions, SageMaker), Machine Learning, XGBoost, scikit-learn
+    \item \textbf{Core Competencies:} Data Cleaning, Statistical Analysis, KPI Reporting, Business Analysis, Guesstimates, Market Sizing
+\end{itemize}
+
+\vspace{-11pt}
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+
+\resumeSubheading{Product Analyst Intern}{April 2026 -- June 2026}{Interviewkit.ai (Remote)}{}
+\begin{itemize}
+    \item Collaborated directly with the founder on product strategy, feature planning, and execution, translating usage data and user feedback into prioritized improvements to platform workflows and engagement systems.
+    \item Built a REST API editor and an intelligent job recommendation module using keyword extraction, structured filtering, and profile-matching techniques to surface the most relevant listings for each user.
+    \item Developed a resume-based system to auto-generate personalized technical interview questions and detailed, role-specific model answers for candidates preparing across multiple domains.
+\end{itemize}
+
+\vspace{1pt}
+
+\resumeSubheading{Analyst Fellow}{May 2026 -- June 2026}{CrackNonTech}{}
+\begin{itemize}
+    \item Studied profitability analysis, market entry frameworks, and cost-benefit evaluation through case studies and mentor-led sessions on real-world, ambiguous business problems and scenarios.
+    \item Sharpened SQL querying, Python scripting, and guesstimate skills to model business problems, estimate market sizes, and present structured, data-driven strategic recommendations to peers and mentors.
+\end{itemize}
+
+\vspace{-11pt}
+
+% ---------- PROJECTS ----------
+\section{Projects}
+
+\resumeProject{Ola Data Analytics End-to-End Project}{SQL, Excel, Power BI}{https://github.com/dipeshmaindolia001/Ola-Data-Analytics-End-to-End-Project}
+\begin{itemize}
+    \item Analyzed large-scale ride booking datasets using SQL and Excel to surface insights on ride demand patterns, peak hours, revenue trends, driver ratings, vehicle types, and cancellation reasons.
+    \item Wrote SQL queries to clean, join, and aggregate raw booking data across multiple tables, handling missing values and inconsistent formatting before loading into the reporting layer.
+    \item Built interactive Power BI dashboards with KPI cards, slicers, drill-throughs, and trend charts to help monitor day-to-day operations and reduce revenue leakage across regions.
+\end{itemize}
+
+\vspace{1pt}
+
+\resumeProject{YouTube Trending Data Pipeline on AWS}{AWS S3, Lambda, Glue, Step Functions}{https://github.com/dipeshmaindolia001/YouTube-Trending-Data-Pipeline-on-AWS}
+\begin{itemize}
+    \item Built a fully automated end-to-end data pipeline using AWS S3, Lambda, and Glue with the YouTube Data API to ingest, clean, transform, partition, and store trending video data.
+    \item Implemented Medallion Architecture (Bronze, Silver, Gold layers) with AWS Step Functions for reliable orchestration, scheduling, retry logic, alerts, and end-to-end monitoring.
+\end{itemize}
+
+\vspace{1pt}
+
+\resumeProject{Flight Price Prediction using AWS SageMaker}{Python, XGBoost, scikit-learn, Streamlit}{https://github.com/dipeshmaindolia001/sagemaker-flight-prices-prediction}
+\begin{itemize}
+    \item Built a complete flight price prediction system on AWS SageMaker, covering preprocessing, feature engineering, model training, and hyperparameter tuning using XGBoost with Bayesian optimization.
+    \item Engineered features from raw flight data using scikit-learn Pipelines and custom transformers; deployed a Streamlit web app to Streamlit Cloud for real-time price predictions.
+\end{itemize}
+
+\vspace{-11pt}
 
 % ---------- EDUCATION ----------
 \section{Education}
 
 \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} c r}
-\textbf{B.S. in Data Science and Applications} & \textbf{CGPA: 6.85} & \textbf{2023 -- Present} \\
-\textit{Indian Institute of Technology Madras} & & \\[0.5pt]
-
 \textbf{B.Tech in Information Technology} & \textbf{CGPA: 7.4} & \textbf{2022 -- 2026} \\
-\textit{College of Technology, Pantnagar} & & \\[0.5pt]
+\textit{College of Technology, Pantnagar} & & \\[1pt]
 
 \textbf{Senior Secondary (Class XII)} & \textbf{92\%} & \textbf{2021} \\
-\textit{St. Joseph Convent School} & & \\[0.5pt]
+\textit{St. Joseph Convent School} & & \\[1pt]
 
 \textbf{High School (Class X)} & \textbf{92\%} & \textbf{2019} \\
 \textit{USR Indu Inter College} & & \\
 \end{tabular*}
 
-\vspace{-6pt}
-
-% ---------- EXPERIENCE ----------
-\section{Experience}
-
-\resumeSubheading{Interviewkit.ai}{(Remote)}{Product Analyst Intern}{April 2026 -- June 2026}
-\begin{itemize}
-    \item \textbf{Product \& Feature Development:} Collaborated directly with the founder on product strategy, feature planning, and execution while improving platform workflows and user engagement systems.
-    \item \textbf{REST API \& Recommendation Module:} Built a REST API editor and an intelligent job recommendation module using keyword extraction, structured filtering, and profile-matching techniques.
-    \item \textbf{Interview Q\&A System:} Developed a resume-based system capable of auto-generating personalized technical interview questions and detailed model answers.
-\end{itemize}
-
-\vspace{1pt}
-
-\textbf{CrackNonTech} \hfill May 2026 -- June 2026 \\
-\textit{Analyst Fellowship}
-
-\begin{itemize}
-    \item \textbf{Business Strategy:} Studied \textbf{profitability analysis}, \textbf{market entry frameworks} and
-    \textbf{cost-benefit evaluation} through case studies, mentor-led sessions, industry scenarios and group problem-solving.
-
-    \item \textbf{Analytical Tools:} Sharpened \textbf{SQL querying}, \textbf{Python scripting} and \textbf{guesstimate}
-    skills to model business problems, estimate market sizes and present structured data-driven strategic recommendations.
-\end{itemize}
-
-\vspace{-5pt}
-
-% ---------- PROJECTS ----------
-\section{Projects}
-
-\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
-\textbf{YouTube Trending Data Pipeline on AWS} & \href{https://github.com/dipeshmaindolia001/YouTube-Trending-Data-Pipeline-on-AWS}{\small\color{linkblue}GitHub} \\
-\end{tabular*}
-\begin{itemize}
-    \item \textbf{Pipeline Design:} Built a fully \textbf{automated end-to-end data pipeline} using \textbf{AWS S3,
-    Lambda and Glue} with the \textbf{YouTube Data API} to continuously ingest, clean, transform, partition and store data.
-    \item \textbf{Architecture \& Orchestration:} Implemented \textbf{Medallion Architecture} with \textbf{Bronze, Silver
-    and Gold layers} and \textbf{AWS Step Functions} for reliable orchestration, scheduling, retry logic, alerts and monitoring.
-\end{itemize}
-
-\vspace{0.5pt}
-
-\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
-\textbf{Flight Price Prediction using AWS SageMaker} & \href{https://github.com/dipeshmaindolia001/sagemaker-flight-prices-prediction}{\small\color{linkblue}GitHub} \\
-\end{tabular*}
-\begin{itemize}
-    \item \textbf{End-to-End ML Pipeline:} Built a complete flight price prediction system on \textbf{AWS SageMaker}, covering data preprocessing, feature engineering, model training and hyperparameter tuning using \textbf{XGBoost} with \textbf{Bayesian optimization} via SageMaker's \textbf{HyperparameterTuner}.
-    \item \textbf{Feature Engineering \& Deployment:} Engineered features from raw flight data (airline, route, timestamps, duration) using advanced \textbf{scikit-learn Pipelines, FeatureUnion} and custom transformers; deployed a \textbf{Streamlit} web application to \textbf{Streamlit Cloud} for real-time price predictions.
-\end{itemize}
-
-\vspace{0.5pt}
-
-\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
-\textbf{Ola Data Analytics End-to-End Project} & \href{https://github.com/dipeshmaindolia001/Ola-Data-Analytics-End-to-End-Project}{\small\color{linkblue}GitHub} \\
-\end{tabular*}
-\begin{itemize}
-    \item \textbf{Data Analysis:} Analyzed \textbf{ride booking datasets} using \textbf{SQL}, \textbf{Excel} and
-    \textbf{Power BI} to surface insights on ride demand, peak hours, revenue, driver ratings, vehicle types and cancellations.
-    \item \textbf{Dashboard \& Reporting:} Built \textbf{interactive Power BI dashboards} with \textbf{KPI cards, slicers,
-    drill-throughs and trend charts} to monitor operations and enable data-backed decisions across all business functions.
-\end{itemize}
-
-\vspace{-5pt}
-
-% ---------- SKILLS ----------
-\section{Technical Skills}
-
-\begin{tabular*}{\textwidth}{l @{\hspace{1.5em}} l @{\hspace{1.5em}} l @{\hspace{1.5em}} l}
-\textbullet\ \textbf{Languages:} C++, Python, SQL &
-\textbullet\ \textbf{BI \& Analytics:} Excel, Power BI &
-\textbullet\ \textbf{Cloud:} AWS &
-\textbullet\ \textbf{ML:} Machine Learning \\
-\end{tabular*}
-
-\vspace{-5pt}
+\vspace{-11pt}
 
 % ---------- POSITION OF RESPONSIBILITY ----------
 \section{Position of Responsibility}
 
 \textbf{Convocation Digital Card Team Lead}
 \begin{itemize}
-    \item \textbf{Team Leadership:} Led the end-to-end \textbf{digital invitation and QR-based security verification
-    system} for the university convocation, coordinating a cross-functional team across design, dev and operations.
-    \item \textbf{Cost Impact:} Eliminated paper-based manual workflows and contributed to \textbf{Rs.~1.5 lakh in
-    cost savings} by deploying a scalable digital check-in system with real-time entry validation and audit logs.
+    \item Led the end-to-end digital invitation and QR-based security verification system for the university convocation, coordinating a cross-functional team across design, development, and operations.
+    \item Eliminated paper-based manual workflows and contributed to Rs.~1.5 lakh in cost savings by deploying a scalable digital check-in system with real-time entry validation and audit logs.
 \end{itemize}
 
-\vspace{-5pt}
+\vspace{-11pt}
 
 % ---------- ACHIEVEMENTS ----------
 \section{Achievements}
 
 \begin{itemize}
-    \item \textbf{GATE:} Cleared \textbf{GATE CSE 2026} and \textbf{GATE DA 2025} with \textbf{94.3 percentile} and
-    \textbf{86 percentile} respectively, qualifying among the top rankers in highly competitive national-level exams.
-    \item \textbf{EdTech Initiative -- Pantnagar Pathshala:} Built and scaled
-    \href{https://pantnagar-pathshala.vercel.app/}{\underline{\color{linkblue}\textbf{Pantnagar Pathshala}}}\linkicon{https://pantnagar-pathshala.vercel.app/}, an EdTech
-    platform for Pantnagar entrance exam preparation, alongside an associated
-    \href{https://www.youtube.com/@dipeshmaindolia}{\underline{\color{linkblue}\textbf{YouTube channel}}}\linkicon{https://www.youtube.com/@dipeshmaindolia} that crossed
+    \item \textbf{GATE:} Cleared \textbf{GATE CSE 2026} (94.3 percentile) and \textbf{GATE DA 2025} (86 percentile), qualifying among the top rankers in highly competitive national-level exams.
+    \item \textbf{Certification:} Completed the \textbf{Foundations of Data Science and Applications} certification from the \textbf{Indian Institute of Technology (IIT) Madras}.
+    \item \textbf{EdTech Initiative:} Built and scaled
+    \href{https://pantnagar-pathshala.vercel.app/}{\color{linkblue}\underline{Pantnagar Pathshala}}, an EdTech
+    platform with an associated
+    \href{https://www.youtube.com/@dipeshmaindolia}{\color{linkblue}\underline{YouTube channel}} that crossed
     \textbf{1,000+ subscribers}.
-    \item \textbf{Academic \& Creative:} Secured \textbf{2nd Position} in the Shutterbug Short Film Competition and
-    achieved \textbf{100/100 in Mathematics} in Class X Boards, showcasing both analytical and creative strengths.
-    \item \textbf{Freelance Creative Work:} Independently delivered \textbf{video editing} and \textbf{thumbnail design}
-    for multiple YouTube creators and branding clients, producing high-quality content that grew channel engagement.
 \end{itemize}
 
 \end{document}
