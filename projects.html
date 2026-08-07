@@ -47,53 +47,59 @@
     <section class="reveal">
       <p class="eyebrow">Projects</p>
       <h2 class="section-title">Things I've shipped</h2>
-      <p class="section-lede">Three end-to-end builds — a cloud data pipeline, a deployed ML app, and a BI dashboard. Each card links straight to the repo.</p>
+      <p class="section-lede">Three end-to-end builds — an ML prediction system on AWS, a GenAI content generator, and a cloud data pipeline. Each card links straight to the repo.</p>
     </section>
+
+    <a class="card reveal" href="https://github.com/dipeshmaindolia001/Flight-Price-Prediction-AWS-Sagemaker" target="_blank" rel="noopener">
+      <div class="card-top">
+        <h3>Flight Price Prediction — AWS SageMaker</h3>
+        <span class="meta">XGBoost · scikit-learn · Streamlit</span>
+      </div>
+      <p>End-to-end ML pipeline on AWS SageMaker: preprocessing, feature engineering from raw flight data (airline, route, timestamps, duration), and hyperparameter tuning with XGBoost via Bayesian optimization.</p>
+      <p>Engineered features using scikit-learn Pipelines, FeatureUnion, and custom transformers. Deployed a Streamlit web application to Streamlit Cloud for real-time price predictions.</p>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">XGBoost</span>
+        <span class="tag">scikit-learn</span>
+        <span class="tag">AWS SageMaker</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Bayesian Optimization</span>
+      </div>
+      <div class="card-links"><span>View on GitHub →</span></div>
+    </a>
+
+    <a class="card reveal" href="https://github.com/dipeshmaindolia001/LinkedIn-Post-Generator" target="_blank" rel="noopener">
+      <div class="card-top">
+        <h3>LinkedIn Post Generator — Gen AI (Llama 3.2)</h3>
+        <span class="meta">LangChain · Groq API · Streamlit</span>
+      </div>
+      <p>Two-stage GenAI pipeline: extracts topic, language, and length metadata from a user's past LinkedIn posts, then uses Llama 3.2 (via Groq API) to generate new posts matching their personal writing style.</p>
+      <p>Implemented few-shot prompting by retrieving stylistically similar past posts and deployed an interactive Streamlit application for on-brand post generation with minimal manual editing.</p>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">LangChain</span>
+        <span class="tag">Groq API</span>
+        <span class="tag">Llama 3.2</span>
+        <span class="tag">Few-Shot Prompting</span>
+        <span class="tag">Streamlit</span>
+      </div>
+      <div class="card-links"><span>View on GitHub →</span></div>
+    </a>
 
     <a class="card reveal" href="https://github.com/dipeshmaindolia001/YouTube-Trending-Data-Pipeline-on-AWS" target="_blank" rel="noopener">
       <div class="card-top">
         <h3>YouTube Trending Data Pipeline on AWS</h3>
-        <span class="meta">S3 · Lambda · Glue</span>
+        <span class="meta">S3 · Lambda · Glue · Step Functions</span>
       </div>
-      <p>Fully automated end-to-end pipeline using AWS S3, Lambda, and Glue with the YouTube Data API to continuously ingest, clean, transform, partition, and store data.</p>
-      <p>Implemented Medallion Architecture (Bronze / Silver / Gold) with AWS Step Functions handling orchestration, scheduling, retry logic, alerts, and monitoring.</p>
+      <p>Fully automated end-to-end data pipeline using AWS S3, Lambda, and Glue with the YouTube Data API to ingest, clean, transform, and store data following Medallion Architecture (Bronze/Silver/Gold).</p>
+      <p>Orchestrated with AWS Step Functions for reliable scheduling, retry logic, and automated alerts across pipeline stages ensuring consistent, analysis-ready data.</p>
       <div class="tags">
         <span class="tag">AWS S3</span>
         <span class="tag">Lambda</span>
         <span class="tag">Glue</span>
         <span class="tag">Step Functions</span>
         <span class="tag">Medallion Architecture</span>
-      </div>
-      <div class="card-links"><span>View on GitHub →</span></div>
-    </a>
-
-    <a class="card reveal" href="https://github.com/dipeshmaindolia001/Flight-Price-Prediction-AWS-Sagemaker" target="_blank" rel="noopener">
-      <div class="card-top">
-        <h3>Flight Price Prediction — AWS SageMaker</h3>
-        <span class="meta">XGBoost · Streamlit</span>
-      </div>
-      <p>Complete price-prediction system on SageMaker: preprocessing, feature engineering, training, and hyperparameter tuning with XGBoost via Bayesian optimization.</p>
-      <p>Engineered features from raw flight data (airline, route, timestamps, duration) using scikit-learn Pipelines, FeatureUnion, and custom transformers; deployed a Streamlit app for real-time predictions.</p>
-      <div class="tags">
-        <span class="tag">AWS SageMaker</span>
-        <span class="tag">XGBoost</span>
-        <span class="tag">scikit-learn</span>
-        <span class="tag">Streamlit</span>
-      </div>
-      <div class="card-links"><span>View on GitHub →</span></div>
-    </a>
-
-    <a class="card reveal" href="https://github.com/dipeshmaindolia001/Ola-Data-Analytics-End-to-End-Project" target="_blank" rel="noopener">
-      <div class="card-top">
-        <h3>Ola Data Analytics — End to End</h3>
-        <span class="meta">SQL · Excel · Power BI</span>
-      </div>
-      <p>Analyzed ride-booking datasets with SQL, Excel, and Power BI to surface insights on ride demand, peak hours, revenue, driver ratings, vehicle types, and cancellations.</p>
-      <p>Built interactive Power BI dashboards with KPI cards, slicers, drill-throughs, and trend charts to support operational decisions across business functions.</p>
-      <div class="tags">
-        <span class="tag">SQL</span>
-        <span class="tag">Excel</span>
-        <span class="tag">Power BI</span>
+        <span class="tag">ETL</span>
       </div>
       <div class="card-links"><span>View on GitHub →</span></div>
     </a>
