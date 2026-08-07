@@ -1,12 +1,12 @@
 % ------------------------
-% Resume - Data Analyst
+% Resume - Machine Learning Engineer
 % Author : Dipesh Maindolia
 % ------------------------
 
 \documentclass[letterpaper,8pt]{article}
 
 \usepackage[empty]{fullpage}
-\usepackage[margin=0.32in, top=0.14in, bottom=0.14in]{geometry}
+\usepackage[margin=0.32in, top=0.1in, bottom=0.1in]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
@@ -14,9 +14,11 @@
 \usepackage{fontenc}
 
 \pagestyle{empty}
+\sloppy
+\setlength{\parfillskip}{0pt plus 1fil}
 
 \urlstyle{same}
-\linespread{0.87}
+\linespread{0.84}
 \setlength{\parindent}{0pt}
 
 \setlength{\tabcolsep}{0in}
@@ -38,7 +40,6 @@
 }{}{0em}{}[\titlerule \vspace{0pt}]
 
 % ---------- CUSTOM COMMANDS ----------
-% Left: role/title (bold) + right-aligned italic date
 \newcommand{\resumeSubheading}[4]{
   \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
     \textbf{#1} & \small\textit{#2} \\
@@ -46,7 +47,6 @@
   \end{tabular*}
 }
 
-% Left: project title (bold) + right-aligned GitHub hyperlink
 \newcommand{\resumeProject}[3]{
   \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
     \textbf{#1} \small{-- #2} & \small\href{#3}{\color{linkblue}\underline{GitHub}} \\
@@ -59,7 +59,7 @@
 % ---------- HEADER ----------
 \begin{center}
     {\LARGE \textbf{Dipesh Maindolia}} \\[2pt]
-    {\small \textit{Data Analyst}} \\[2pt]
+    {\small \textit{Machine Learning Engineer}} \\[2pt]
     {\small
     Ramnagar, Uttarakhand, India \textbar\
     +91 7017982390 \textbar\
@@ -71,27 +71,29 @@
     }
 \end{center}
 
-\vspace{-11pt}
+\vspace{-13pt}
 
 % ---------- SUMMARY ----------
 \section{Professional Summary}
-\small{Data Analyst with hands-on experience in SQL, Python, Excel, and Power BI, backed by cloud and ML project
-work on AWS. Skilled in building data pipelines, dashboards, and predictive models that turn raw data into
-actionable insights. GATE CSE and GATE DA qualified.}
+\small{Machine Learning Engineer with hands-on experience building end-to-end ML and GenAI pipelines --
+from data ingestion and feature engineering to model deployment. Skilled in Python, XGBoost/scikit-learn,
+LLM-based application development, and cloud data pipelines on AWS, with working knowledge of Docker and
+MCP servers for building and deploying model-serving applications. GATE CSE and GATE DA qualified.}
 
-\vspace{-11pt}
+\vspace{-13pt}
 
 % ---------- SKILLS ----------
 \section{Technical Skills}
 \begin{itemize}
     \item \textbf{Programming \& Query Languages:} Python, SQL, C++
-    \item \textbf{Data Analysis \& BI Tools:} Excel (Advanced formulas, Pivot Tables), Power BI, Power Query, DAX, Data Visualization, Dashboarding
-    \item \textbf{Databases:} SQL, Data Modeling, ETL / Data Pipelines
-    \item \textbf{Cloud \& Machine Learning:} AWS (S3, Lambda, Glue, Step Functions, SageMaker), Machine Learning, XGBoost, scikit-learn
-    \item \textbf{Core Competencies:} Data Cleaning, Statistical Analysis, KPI Reporting, Business Analysis, Guesstimates, Market Sizing
+    \item \textbf{Machine Learning:} scikit-learn, XGBoost, Feature Engineering, Hyperparameter Tuning (Bayesian Optimization), Model Evaluation
+    \item \textbf{Generative AI:} LLM Application Development, Prompt Engineering, Few-Shot Learning, LangChain, Groq API (Llama 3.2), MCP Servers
+    \item \textbf{MLOps \& Deployment:} Docker, Streamlit, AWS (S3, Lambda, Glue, Step Functions, SageMaker), Model Serving, CI-Ready Pipelines
+    \item \textbf{Data Engineering:} ETL / Data Pipelines, Medallion Architecture, Data Cleaning, Data Validation, Pipeline Monitoring
+    \item \textbf{Core Competencies:} Statistical Analysis, Data Visualization, Problem Solving, Documentation
 \end{itemize}
 
-\vspace{-11pt}
+\vspace{-13pt}
 
 % ---------- EXPERIENCE ----------
 \section{Experience}
@@ -111,28 +113,10 @@ actionable insights. GATE CSE and GATE DA qualified.}
     \item Sharpened SQL querying, Python scripting, and guesstimate skills to model business problems, estimate market sizes, and present structured, data-driven strategic recommendations to peers and mentors.
 \end{itemize}
 
-\vspace{-11pt}
+\vspace{-13pt}
 
 % ---------- PROJECTS ----------
 \section{Projects}
-
-\resumeProject{Ola Data Analytics End-to-End Project}{SQL, Excel, Power BI}{https://github.com/dipeshmaindolia001/Ola-Data-Analytics-End-to-End-Project}
-\begin{itemize}
-    \item \textbf{Data Analysis:} Analyzed ride booking datasets using SQL, Excel, and Power BI to surface insights on ride demand patterns, peak hours, revenue trends, driver ratings, and vehicle types.
-    \item \textbf{Data Cleaning \& Preparation:} Wrote SQL queries to clean, join, and aggregate raw booking data across multiple tables, handling missing values and inconsistent formatting before analysis.
-    \item \textbf{Dashboard \& Reporting:} Built interactive Power BI dashboards with KPI cards, slicers, drill-throughs, and trend charts to monitor operations and enable data-backed decisions.
-\end{itemize}
-
-\vspace{1pt}
-
-\resumeProject{YouTube Trending Data Pipeline on AWS}{AWS S3, Lambda, Glue, Step Functions}{https://github.com/dipeshmaindolia001/YouTube-Trending-Data-Pipeline-on-AWS}
-\begin{itemize}
-    \item \textbf{Pipeline Design:} Built a fully automated end-to-end data pipeline using AWS S3, Lambda, and Glue with the YouTube Data API to continuously ingest, clean, transform, and store data.
-    \item \textbf{Architecture \& Orchestration:} Implemented Medallion Architecture with Bronze, Silver, and Gold layers and AWS Step Functions for reliable orchestration, scheduling, and retry logic.
-    \item \textbf{Monitoring \& Reliability:} Configured automated alerts and monitoring across pipeline stages to ensure consistent, analysis-ready data with minimal manual intervention.
-\end{itemize}
-
-\vspace{1pt}
 
 \resumeProject{Flight Price Prediction using AWS SageMaker}{Python, XGBoost, scikit-learn, Streamlit}{https://github.com/dipeshmaindolia001/sagemaker-flight-prices-prediction}
 \begin{itemize}
@@ -141,7 +125,25 @@ actionable insights. GATE CSE and GATE DA qualified.}
     \item \textbf{Deployment:} Deployed a Streamlit web application to Streamlit Cloud, enabling users to input flight details and receive real-time price predictions.
 \end{itemize}
 
-\vspace{-11pt}
+\vspace{1pt}
+
+\resumeProject{LinkedIn Post Generator -- Gen AI (Llama 3.2)}{Python, LangChain, Groq API, Streamlit}{https://github.com/dipeshmaindolia001/LinkedIn-Post-Generator-Gen-AI-Using-Llama3.2}
+\begin{itemize}
+    \item \textbf{GenAI Pipeline:} Built a two-stage Generative AI pipeline that extracts topic, language, and length metadata from a user's past LinkedIn posts, then uses Llama 3.2 (via the Groq API) to generate new posts that match their personal writing style.
+    \item \textbf{Prompt \& Retrieval Design:} Implemented few-shot prompting by retrieving stylistically similar past posts for the selected topic, language, and length, and used them to guide the LLM's tone, structure, and output quality.
+    \item \textbf{Application Layer:} Deployed an interactive Streamlit application allowing users to select topic, length, and language, and generate on-brand posts on demand with minimal manual editing.
+\end{itemize}
+
+\vspace{1pt}
+
+\resumeProject{YouTube Trending Data Pipeline on AWS}{AWS S3, Lambda, Glue, Step Functions}{https://github.com/dipeshmaindolia001/YouTube-Trending-Data-Pipeline-on-AWS}
+\begin{itemize}
+    \item \textbf{Pipeline Design:} Built a fully automated end-to-end data pipeline using AWS S3, Lambda, and Glue with the YouTube Data API to ingest, clean, transform, and store data.
+    \item \textbf{Architecture \& Orchestration:} Implemented Medallion Architecture (Bronze/Silver/Gold) with AWS Step Functions for reliable orchestration, scheduling, and retry logic.
+    \item \textbf{Monitoring \& Reliability:} Configured automated alerts across pipeline stages to ensure consistent, analysis-ready data with minimal manual intervention.
+\end{itemize}
+
+\vspace{-13pt}
 
 % ---------- EDUCATION ----------
 \section{Education}
@@ -157,7 +159,7 @@ actionable insights. GATE CSE and GATE DA qualified.}
 \textit{USR Indu Inter College} & & \\
 \end{tabular*}
 
-\vspace{-11pt}
+\vspace{-14pt}
 
 % ---------- POSITION OF RESPONSIBILITY ----------
 \section{Position of Responsibility}
@@ -167,7 +169,7 @@ actionable insights. GATE CSE and GATE DA qualified.}
     \item Led the end-to-end digital invitation and QR-based security verification system for the university convocation, coordinating a cross-functional team and eliminating paper-based workflows to contribute Rs.~1.5 lakh in cost savings via real-time entry validation and audit logs.
 \end{itemize}
 
-\vspace{-11pt}
+\vspace{-14pt}
 
 % ---------- ACHIEVEMENTS ----------
 \section{Achievements}
